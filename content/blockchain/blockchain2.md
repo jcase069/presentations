@@ -65,10 +65,9 @@ Source: Blockchain: Blueprint for a New Economy, by Melanie Swan, O'Reilly 2015
 
 Mariana Catalina Izaguirre. Photo: Revistazo
 
-Note:
-Source: *The Economist*:
-http://www.economist.com/news/briefing/21677228-technology-behind-bitcoin-lets-people-who-do-not-know-or-trust-each-other-build-dependable
+Source: [*The Economist*](http://www.economist.com/news/briefing/21677228-technology-behind-bitcoin-lets-people-who-do-not-know-or-trust-each-other-build-dependable)
 
+Note:
 This is Mariana Catalina Izaguirre.  In 2009, the police came to evict her from
 the house she was living in, at the request of the registered owner, who would
 tear it down and rebuild.  Trouble was, Izaguirre, who had lived there for
