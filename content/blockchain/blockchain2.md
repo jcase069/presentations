@@ -34,22 +34,21 @@ So, what is it?
 
 
 
-## What is Blockchain?
+## What is Bitcoin?
 
-![Bitcoin Logo](/content/blockchain/images/bitcoin.jpg)
-<!-- .element  class="fragment" height="35%" -->
+- Distributed <!-- .element class="fragment" -->
+- Crypto <!-- .element class="fragment" -->
+- Currency <!-- .element class="fragment" -->
 
-![Blockchain Imagined](/content/blockchain/images/blockchain.svg.png)
-<!-- .element  class="fragment" height="35%" style="background-color: #FFFFFF"-->
-
-Note: When you hear blockchain, you should think of Bitcoin: the world's first
-successful distributed cryptocurrency.  Bitcoin was invented in 2009 by an
-unknown person under the pseudonym Satoshi Nakamoto, and one of the innovations
-it created was the blockchain.  The term "blockchain" can be used to describe
-the Bitcoin implementation, or the  technology.  
+Note:
+Bitcoin is a distributed crypto currency.  "Currency" because it can be used as
+money.  But money only works if people trust it.  "Crypto" because its
+legitimacy can be derived from the rules of cryptography.  And "Distributed"
+because there is no centralized authority -- no central bank or central
+database.
 
 
-## Bitcoin Network
+### Bitcoin Network
 
 Note:
 The revolutionary idea of Bitcoin is how it can achieve a digital currency on
@@ -60,7 +59,7 @@ that all the bitcoin are transferred into my account?  Well, you can try but
 you're going to fail.
 
 
-## Distributed Network
+### Distributed Network
 
 Note:
 The implementation of bitcoin is completely distributed.  At any moment, you
@@ -71,7 +70,7 @@ be no major disruption in service.  So the network, the storage, and the
 computation work are all completely distributed.
 
 
-## Centralized Ledger
+### Centralized Ledger
 
 Note:
 All of the nodes on the network have a copy of all of the bitcoin transactions
@@ -88,21 +87,53 @@ centralized ledger.
 
 
 
-## Blockchain Applications
+## What is Blockchain?
 
-- Blockchain 1.0: Currency <!-- .element  class="fragment" height="35%" -->
-    - Bitcoin <!-- .element  class="fragment" height="35%" -->
-- Blockchain 2.0: Contracts <!-- .element  class="fragment" height="35%" -->
-    - Mortgages, Titles, Smart Property, Smart Contracts
-- Blockchain 3.0: Applications <!-- .element  class="fragment" height="35%" -->
-    - Government, Culture, Art, Healthcare
+![Bitcoin Logo](/content/blockchain/images/bitcoin.jpg)
+<!-- .element  class="fragment" height="35%" -->
+
+![Blockchain Imagined](/content/blockchain/images/blockchain.svg.png)
+<!-- .element  class="fragment" height="35%" style="background-color: #FFFFFF"-->
+
+Note: When you hear blockchain, you should think of Bitcoin: the world's first
+successful distributed cryptocurrency.  Bitcoin was invented in 2009 by an
+unknown person under the pseudonym Satoshi Nakamoto, and one of the innovations
+it created was the blockchain.  The term "blockchain" can be used to describe
+the Bitcoin implementation, or the  technology.  
+
+
+## Blockchain Applications
+<div style="float:right; width: 25%">
+![Blockchain book cover](/content/blockchain/images/BlockchainBookCover.png)
+</div>
+<div style="width: 70%">
+    <ul>
+        <li class="fragment">
+            Blockchain 1.0: Currency
+            <ul>
+                <li class="fragment">
+                    Bitcoin
+                </li>
+            </ul>
+        </li>
+        <li class="fragment">Blockchain 2.0: Contracts</li>
+        <ul class="fragment">
+            <li>Mortgages, Titles, Smart Property, Smart Contracts</li>
+        </ul>
+        <li class="fragment">Blockchain 3.0: Applications</li>
+        <ul class="fragment">
+            <li>Government, Culture, Art, Healthcare</li>
+        </ul>
+    </ul>
+</div>
 
 Note:
+
 Source: Blockchain: Blueprint for a New Economy, by Melanie Swan, O'Reilly 2015
 
 
 
-# Blockchain 1.0
+## Blockchain 1.0
 ### Currency
 
 
