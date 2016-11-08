@@ -36,9 +36,14 @@ So, what is it?
 
 ## What is Bitcoin?
 
-- Distributed <!-- .element class="fragment" -->
-- Crypto <!-- .element class="fragment" -->
-- Currency <!-- .element class="fragment" -->
+
+### Bitcoin
+
+<h3>
+<span class="fragment">Distributed</span>
+<span class="fragment">Crypto</span>
+<span class="fragment">Currency</span>
+</h3>
 
 Note:
 Bitcoin is a distributed crypto currency.  "Currency" because it can be used as
@@ -87,7 +92,70 @@ centralized ledger.
 
 
 
-## What is Blockchain?
+## What is a Blockchain?
+
+Note:
+So, what is a blockchain?  Well, the ledger consists of blocks, where each
+block references the last.  You can only append to the blockchain; you can
+never change an old one.  If a mistake gets added to the blockchain, that
+mistake will stay around forever (though it could be corrected by adding the
+inverse of the mistake to a later block).  How does that work?
+
+
+### A Blockchain is Like This
+
+![Simplified Blockchain](/content/blockchain/images/Blockchain_simple.png)
+
+But this can still be hacked!
+<!-- .element class="fragment" -->
+
+Note:
+This is not what a real blockchain looks like, but imagine the following
+data structure.  Every block contains new transactions, and at the end, it
+has the cryptographic hash of the previous block.  Now, assume someone wants
+to change a transaction that happened in the past.  By changing any bits in
+the transaction, you change the cryptographic hash of the entire block, so
+now the next block's previous hash value is incorrect.  Any node in the
+network can see that this blockchain has been tampered with.  Anyone who wants
+to rewrite history would need to rewrite all the hashes of all the subsequent
+blocks.
+
+Well, that sounds doable.  How can we make it intractable to do that?
+
+
+### Proof of Work
+
+This is closer to what an actual blockchain looks like.
+
+![Blockchain Structure](/content/blockchain/images/BlockchainStructure.png)
+
+- Every block must have a hash less than a target value.
+<!-- .element class="fragment" -->
+- If it does not, pick a new nonce and try again.
+<!-- .element class="fragment" -->
+
+Note:
+What if every block on the chain took a lot of work?  If we could ensure that
+every block on the chain required hours or weeks or months of intense
+computation work, we can make it intractable to rewrite the thousands of blocks
+it would take to rewrite history.  And while the malicious actor is trying to
+rewrite history, more blocks are being generated, making it even harder as time
+goes on.  This mechanism is called "Proof of Work".
+
+
+### Compensating Proof of Work
+
+- Each node competes to add a new block to the ledger<!-- .element class="fragment" -->
+- A node needs to be the first to find a valid block<!-- .element class="fragment" -->
+- A node earns a reward for adding each block<!-- .element class="fragment" -->
+    - 12 Btc (2016)<!-- .element class="fragment" -->
+    - Reward halves from time to time<!-- .element class="fragment" -->
+
+
+### Blockchain
+
+The centralized ledger of transactions, copied to every node in the Bitcoin
+network.
 
 ![Bitcoin Logo](/content/blockchain/images/bitcoin.jpg)
 <!-- .element  class="fragment" height="35%" -->
@@ -99,10 +167,48 @@ Note: When you hear blockchain, you should think of Bitcoin: the world's first
 successful distributed cryptocurrency.  Bitcoin was invented in 2009 by an
 unknown person under the pseudonym Satoshi Nakamoto, and one of the innovations
 it created was the blockchain.  The term "blockchain" can be used to describe
-the Bitcoin implementation, or the  technology.  
+the Bitcoin implementation, or the  technology.
+
+
+### Cryptography
+
+- Hashing
+    - (Document) => (Number)
+- Signing
+    - (Document, Private Key) => (Document + Signature)
+    - (Document, Signature, Public Key) => (Valid?)
+- Encryption
+    - (Document, Public Key) => (Encrypted Document)
+    - (Encrypted Document, Private Key) => (Document)
+
+Note:
+I said before that Bitcoin depends on Cryptography to prove its safety.  What,
+precisely does it need?
+
+- Hashing is a fast (constant-time) algorithm to compute a digital document of
+any length into a number.  Any change to the document, no matter how small, must
+cause the new output to be markedly different, to the point that no one can
+successively approach a target value by subtly adjusting the document.  This
+is necessary for proof-of-work above, and also for chaining together the
+blockchain.
+- Signing.  Given a document and a private key, create a signature that can be
+transmitted along with the document.  No one can sign a document except the
+holder of the private key.  Everyone with the public key can quickly verify
+that only the holder of the private key could have signed the document.
+- Encryption is not actually used in Bitcoin, but it will be discussed in
+other applications of the technology.  Given a Document and a Public Key, create
+a document that no one can read without the corresponding Private Key.
+
 
 
 ## Blockchain Applications
+
+Note:
+So now that Bitcoin is out, can we do anything with the technology other than
+a nerd cryptocurrency?  Well, we can.  We can do a lot.
+
+
+### Blockchain Application Evolution
 <div style="float:right; width: 25%">
 ![Blockchain book cover](/content/blockchain/images/BlockchainBookCover.png)
 </div>
