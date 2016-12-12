@@ -46,14 +46,16 @@ So, what is it?
 </h3>
 
 Note:
-Bitcoin is a distributed crypto currency.  "Currency" because it can be used as
-money.  But money only works if people trust it.  "Crypto" because its
+Bitcoin is a distributed crypto currency.  "Currency" because it can be
+used as money.  But money only works if people trust it.  "Crypto" because its
 legitimacy can be derived from the rules of cryptography.  And "Distributed"
 because there is no centralized authority -- no central bank or central
 database.
 
 
 ### Bitcoin Network
+
+![Node Network](/content/blockchain/images/NodeNetwork.svg)
 
 Note:
 The revolutionary idea of Bitcoin is how it can achieve a digital currency on
@@ -63,10 +65,6 @@ doesn't seem safe.  After all, could I take the software and re-write it so
 that all the bitcoin are transferred into my account?  Well, you can try but
 you're going to fail.
 
-
-### Distributed Network
-
-Note:
 The implementation of bitcoin is completely distributed.  At any moment, you
 could have thousands of nodes on the network.  As of late 2016, there are
 roughly 5000 listening nodes.  If a natural disaster took out most of the nodes,
@@ -74,8 +72,12 @@ the network would survive just fine.  There might be a hiccup, but there would
 be no major disruption in service.  So the network, the storage, and the
 computation work are all completely distributed.
 
+(Image created in draw.io)
+
 
 ### Centralized Ledger
+
+![Accounting Ledger](/content/blockchain/images/Ledger.jpg)
 
 Note:
 All of the nodes on the network have a copy of all of the bitcoin transactions
@@ -89,6 +91,43 @@ centralized ledger.
 So when people say that Bitcoin is distributed, yes, the network is distributed.
 But the genius is that the distributed network can create a conceptually
 centralized ledger.
+
+(Image from flickr user Edinburgh City of Print:
+https://www.flickr.com/photos/30239838@N04/4268190563)
+
+
+
+## Cryptography Overview
+
+
+### Cryptography Primitives
+
+- Hashing
+    - (Document) => (Number)
+- Signing
+    - (Document, Private Key) => (Document + Signature)
+    - (Document, Signature, Public Key) => (Valid?)
+- Encryption
+    - (Document, Public Key) => (Encrypted Document)
+    - (Encrypted Document, Private Key) => (Document)
+
+Note:
+I said before that Bitcoin depends on Cryptography to prove its safety.  What,
+precisely does it need?
+
+- Hashing is a fast (constant-time) algorithm to compute a digital document of
+any length into a number.  Any change to the document, no matter how small, must
+cause the new output to be markedly different, to the point that no one can
+successively approach a target value by subtly adjusting the document.  This
+is necessary for proof-of-work above, and also for chaining together the
+blockchain.
+- Signing.  Given a document and a private key, create a signature that can be
+transmitted along with the document.  No one can sign a document except the
+holder of the private key.  Everyone with the public key can quickly verify
+that only the holder of the private key could have signed the document.
+- Encryption is not actually used in Bitcoin, but it will be discussed in
+other applications of the technology.  Given a Document and a Public Key, create
+a document that no one can read without the corresponding Private Key.
 
 
 
@@ -168,37 +207,6 @@ successful distributed cryptocurrency.  Bitcoin was invented in 2009 by an
 unknown person under the pseudonym Satoshi Nakamoto, and one of the innovations
 it created was the blockchain.  The term "blockchain" can be used to describe
 the Bitcoin implementation, or the  technology.
-
-
-### Cryptography
-
-- Hashing
-    - (Document) => (Number)
-- Signing
-    - (Document, Private Key) => (Document + Signature)
-    - (Document, Signature, Public Key) => (Valid?)
-- Encryption
-    - (Document, Public Key) => (Encrypted Document)
-    - (Encrypted Document, Private Key) => (Document)
-
-Note:
-I said before that Bitcoin depends on Cryptography to prove its safety.  What,
-precisely does it need?
-
-- Hashing is a fast (constant-time) algorithm to compute a digital document of
-any length into a number.  Any change to the document, no matter how small, must
-cause the new output to be markedly different, to the point that no one can
-successively approach a target value by subtly adjusting the document.  This
-is necessary for proof-of-work above, and also for chaining together the
-blockchain.
-- Signing.  Given a document and a private key, create a signature that can be
-transmitted along with the document.  No one can sign a document except the
-holder of the private key.  Everyone with the public key can quickly verify
-that only the holder of the private key could have signed the document.
-- Encryption is not actually used in Bitcoin, but it will be discussed in
-other applications of the technology.  Given a Document and a Public Key, create
-a document that no one can read without the corresponding Private Key.
-
 
 
 ## Blockchain Applications
