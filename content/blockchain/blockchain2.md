@@ -97,19 +97,12 @@ https://www.flickr.com/photos/30239838@N04/4268190563)
 
 
 
-## Cryptography Overview
+## Cryptography Part 1
 
 
-### Cryptography Primitives
+### Hashing
 
-- Hashing
-    - (Document) => (Number)
-- Signing
-    - (Document, Private Key) => (Document + Signature)
-    - (Document, Signature, Public Key) => (Valid?)
-- Encryption
-    - (Document, Public Key) => (Encrypted Document)
-    - (Encrypted Document, Private Key) => (Document)
+#### (Document) => (Number)
 
 Note:
 I said before that Bitcoin depends on Cryptography to prove its safety.  What,
@@ -121,24 +114,17 @@ cause the new output to be markedly different, to the point that no one can
 successively approach a target value by subtly adjusting the document.  This
 is necessary for proof-of-work above, and also for chaining together the
 blockchain.
-- Signing.  Given a document and a private key, create a signature that can be
-transmitted along with the document.  No one can sign a document except the
-holder of the private key.  Everyone with the public key can quickly verify
-that only the holder of the private key could have signed the document.
-- Encryption is not actually used in Bitcoin, but it will be discussed in
-other applications of the technology.  Given a Document and a Public Key, create
-a document that no one can read without the corresponding Private Key.
 
 
 
 ## What is a Blockchain?
 
 Note:
-So, what is a blockchain?  Well, the ledger consists of blocks, where each
-block references the last.  You can only append to the blockchain; you can
-never change an old one.  If a mistake gets added to the blockchain, that
-mistake will stay around forever (though it could be corrected by adding the
-inverse of the mistake to a later block).  How does that work?
+So, what is a blockchain?  
+
+The Bitcoin ledger I hinted at before contains every bitcoin transaction in
+history.  Every node on the blockchain has a copy of the ledger, and the
+ledger is kept in a data structure called the Blockchain.
 
 
 ### A Blockchain is Like This
@@ -248,6 +234,7 @@ Source: Blockchain: Blueprint for a New Economy, by Melanie Swan, O'Reilly 2015
 
 
 ## Blockchain 1.0
+
 ### Currency
 
 
@@ -261,11 +248,8 @@ Source: Blockchain: Blueprint for a New Economy, by Melanie Swan, O'Reilly 2015
 <!-- .element  class="fragment" height="35%" -->
 
 
-## Blockchain
+## Blockchain 2.0
 
-
-
-# Blockchain 2.0
 ### Contracts
 
 
