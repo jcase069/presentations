@@ -2,9 +2,8 @@
 
 ### Dan Hedges
 
-
-
-## Prologue
+### (Prologue)
+<!-- .element class="fragment" -->
 
 Note:
 It's a beautiful day as I walk into Bank of America.  I say, "I would like to
@@ -51,6 +50,11 @@ I'm going to try Wells Fargo next.
 
 ## Blockchain for Healthcare
 
+- Blockchain
+- Bitcoin
+- Cryptography
+- Decentralized Applications
+
 Note:
 Welcome!  I'm Dan Hedges.
 
@@ -78,11 +82,11 @@ deep breath, it won't last long and I'll win you back in a minute or two.
 Note:
 So what is blockchain doing in healthcare?
 
-In a word, hype.  There is a great deal of hype.  The Economist did a cover
+There is a great deal of hype.  The Economist did a cover
 story on Blockchain applications, and featured healthcare as a major target
 for disruption.  There have been multiple summits specifically for healthcare
 blockchain apps, including one here in Austin.  Google "blockchain healthcare"
-and you get over 600K results.  The ONC -- the Department of Health and Human
+and you get over 600K results.  This year, the ONC -- the Department of Health and Human
 Services' Office of the National Coordinator for Health Information Technology --
 issued a whitepaper challenge on blockchain in healthcare and got 70 submissions,
 including the 15 winners which have now been published on their site.
@@ -91,6 +95,10 @@ There is a healthcare revolution brewing that will happen over the next
 decade or so.
 
 So, what is it?
+
+The first thing you need to understand is that it all goes back to 2009, when
+the blockchain was invented as part of an innovative new financial invention
+known as Bitcoin.
 
 
 
@@ -101,8 +109,7 @@ So, what is it?
 
 <h3>
 <span class="fragment">Distributed</span>
-<span class="fragment">Crypto</span>
-<span class="fragment">Currency</span>
+<span class="fragment">Crypto</span><span class="fragment">Currency</span>
 </h3>
 
 Note:
@@ -164,20 +171,68 @@ https://www.flickr.com/photos/30239838@N04/4268190563)
 
 #### (Document) => (Number)
 
+Traits of hashing: <!-- .element class="fragment" -->
+- Collision Resistance <!-- .element class="fragment" -->
+- Hiding <!-- .element class="fragment" -->
+- Puzzle-Friendliness <!-- .element class="fragment" -->
+
 Note:
 I said before that Bitcoin depends on Cryptography to prove its safety.  What,
 precisely does it need?
 
-- Hashing is a fast (constant-time) algorithm to compute a digital document of
-any length into a number.  Any change to the document, no matter how small, must
+Hashing is a fast algorithm to take as input a digital document of
+any length and output a fixed-length number.  Any change to the document, no matter how small, must
 cause the new output to be markedly different, to the point that no one can
 successively approach a target value by subtly adjusting the document.  This
 is necessary for proof-of-work above, and also for chaining together the
 blockchain.
 
+Collision-resistance means it is intractable to find two documents that hash to
+the same number.  It's possible, but you and I will never see the day.
+
+Hiding means that if I gave you a hash, there is no feasible way you can find
+a document that would give me the hash.
+
+And puzzle-friendliness means essentially that any change to the document results
+in a completely unpredictable change to the number.  It looks like a random number
+for every different message.
+
+The most common application of hashing is passwords on websites.  Sites do not
+store your password, they essentially store a hash of your password, and when
+you enter your password the site hashes the password and compares the number
+to the stored hash.
+
+The hash is very important in constructing the data structure known as the
+blockchain.
+
 
 
 ## What is a Blockchain?
+
+### Blockchain
+
+The centralized ledger of transactions, copied to every node in the Bitcoin
+network.
+
+![Bitcoin Logo](/content/blockchain/images/bitcoin.jpg)
+<!-- .element  class="fragment" height="35%" -->
+
+![Blockchain Imagined](/content/blockchain/images/blockchain.svg.png)
+<!-- .element  class="fragment" height="35%" style="background-color: #FFFFFF"-->
+
+Note:
+So, what is a blockchain?
+
+When you hear blockchain, you should think of Bitcoin: the world's first
+successful distributed cryptocurrency.  Bitcoin was invented in 2009 by an
+unknown person under the pseudonym Satoshi Nakamoto, and one of the innovations
+it created was the blockchain.  The term "blockchain" can be used to describe
+the Bitcoin implementation, or the  technology.
+
+The Bitcoin ledger I hinted at before contains every bitcoin transaction in
+history.  Every node on the blockchain has a copy of the ledger, and the
+ledger is kept in a data structure called the Blockchain.
+
 
 ### A Blockchain is Like This
 
@@ -218,31 +273,6 @@ computation work, we can make it intractable to rewrite the thousands of blocks
 it would take to rewrite history.  And while the malicious actor is trying to
 rewrite history, more blocks are being generated, making it even harder as time
 goes on.  This mechanism is called "Proof of Work".
-
-
-### Blockchain
-
-The centralized ledger of transactions, copied to every node in the Bitcoin
-network.
-
-![Bitcoin Logo](/content/blockchain/images/bitcoin.jpg)
-<!-- .element  class="fragment" height="35%" -->
-
-![Blockchain Imagined](/content/blockchain/images/blockchain.svg.png)
-<!-- .element  class="fragment" height="35%" style="background-color: #FFFFFF"-->
-
-Note:
-So, what is a blockchain?
-
-When you hear blockchain, you should think of Bitcoin: the world's first
-successful distributed cryptocurrency.  Bitcoin was invented in 2009 by an
-unknown person under the pseudonym Satoshi Nakamoto, and one of the innovations
-it created was the blockchain.  The term "blockchain" can be used to describe
-the Bitcoin implementation, or the  technology.
-
-The Bitcoin ledger I hinted at before contains every bitcoin transaction in
-history.  Every node on the blockchain has a copy of the ledger, and the
-ledger is kept in a data structure called the Blockchain.
 
 
 ### Compensating Proof of Work
@@ -424,7 +454,9 @@ That is a process called consensus.
 
 A node must:
 - Validate all transactions in a block. <!-- .element class="fragment" -->
-- Find the longest chain of blocks that it considers valid. <!-- .element class="fragment" -->
+    - Did the owners really sign the transactions? <!-- .element class="fragment" -->
+    - Did they really own the  coins?  (Double-spend problem) <!-- .element class="fragment" -->
+- Find the longest valid chain of blocks. <!-- .element class="fragment" -->
 - Propose a new block that points back to that chain. <!-- .element class="fragment" -->
 
 Note:
@@ -439,6 +471,8 @@ That's all you need to achieve consensus.
 ### Malicious Attacks
 #### Stealing Bitcoins
 
+![Malicious Transaction](/content/blockchain/images/MaliciousTransaction.svg)
+
 Note:
 What if you attack the system, by proposing a block that transfers everyone's
 Bitcoins to you?  Well, the transaction would not be signed by the owners of the
@@ -450,12 +484,21 @@ consensus of your proposed transactions
 ### Malicious Attacks
 #### Transaction Preference
 
+![Node Network With Malicious Node](/content/blockchain/images/NodeNetworkWithMalicious.svg)
+![Person I Hate](/content/blockchain/images/jfurnish.jpeg) <!-- .element class="fragment" -->
+
 Note:
-Say there is a particular person that you hate, and you don't want to recognize
-any transaction that gives him Bitcoins.  You could propose a block that includes
-every transaction except his.  You might even get your block accepted as the
-next block in the chain.  But you won't get every block, and eventually a
+Say there is a particular person that I despise, and I want to manipulate the
+currency to make him miserable.  Specifically, I don't want to recognize
+any transaction that gives him Bitcoins.  I could propose a block that includes
+every transaction except his.  I might even get my block accepted as the
+next block in the chain.  But I won't get every block, and eventually a
 compliant node will propose the winning block that will have his transaction.
+
+In addition, I might not recognize any block containing a transaction of his
+to be valid.  But in that case, all the other nodes will disagree with my node,
+until my node becomes unable to keep a chain as long as the others, and then
+vanishes into irrelevance.
 
 
 ### Malicious Attacks
@@ -472,6 +515,8 @@ the system functioning.
 
 ### Rethinking Security
 
+![Password Policy](/content/blockchain/images/password-policy.jpg)
+
 Note:
 We have preconceptions about how security should work.  There is a centralized
 service.  You log in to the centralized service, with a username and password,
@@ -482,11 +527,14 @@ out of the network, playing Red Team/Blue Team games and the like.
 
 Bitcoin is different.  There is no centralized anything.  You create transactions
 with your private signature, so we know that it's you.  And you can do anything
-with those transactions that the consensus of the network is allowed.  Hackers
-are welcome in the network -- there is nothing they can steal or havoc they can
+with those transactions that the consensus of the network allows.  Hackers
+are welcome in the network -- there is nothing they can steal nor havoc they can
 wreak.
 
 That is a paradigm shift.
+
+(Image: Twitter \@DanielAHedges:
+https://twitter.com/DanielAHedges/status/779439458022154240)
 
 
 
@@ -583,7 +631,7 @@ thirty years, actually owned the land.  She had the deed to prove it.  The
 Property Institute held fraudulent documentation filed by a criminal "owner".
 Fortunately, Izaguirre had documentation -- an official title and deed to the
 land -- so thankfully it was all straigtened out.  But only after she was
-forcibly evicted while her children were at school, and her house was
+forcibly evicted while her children were at school, while her house was
 demolished.
 
 This story happened in Honduras, and it is not uncommon in developing countries.
@@ -597,6 +645,15 @@ So, what can the Blockchain do for Mariana?
 
 - Land and property titles
 - Vehicle registrations
+
+Note:
+These things called Bitcoins are really just artificial constructs.  They could
+be anything.  Bitcoin balances are just fixed-point numbers with eight digits
+after the decimal point.  But that's just a convention.  You could trade multiple
+currencies, commodities or equities in the same blockchain.  You can bet 300
+quatloos on the newcomer.  It doesn't even have to be a number -- you can own
+arbitrary strings.  Maybe that string could be a VIN number to legally prove
+you own a car.
 
 
 ## Attestation
@@ -653,6 +710,7 @@ talk about healthcare.  But first, let's talk about Roadhouse.
 
 
 ![Road House, 1989](/content/blockchain/images/Roadhouse.jpg)
+<!-- .element width="45%" -->
 
 Note:
 
@@ -671,6 +729,7 @@ doctor asks him about his medical history, and this happens:
 
 
 ![Road House Medical Record](/content/blockchain/images/RoadHouseMedicalRecord.gif)
+<!-- .element width="70%" -->
 
 Note:
 He hands over his entire medical record, which he keeps in a folder in the trunk
@@ -716,4 +775,132 @@ And now, finally, let's talk about healthcare.
 
 ### Healthcare
 
+![ONC Logo](/content/blockchain/images/logo-dept-hhs.jpg)
+<!-- .element class="fragment" -->
+
 Note:
+So, what can Blockchain do for healthcare?
+
+As I mentioned in the very beginning, the ONC -- the Department of Health and Human
+Services' Office of the National Coordinator for Health Information Technology --
+asked that very question, when it issued a
+[whitepaper challenge](https://www.hhs.gov/about/news/2016/08/29/onc-announces-blockchain-challenge-winners.html)
+on blockchain in
+healthcare and got 70 submissions, including the 15 winners which have now been
+published on their site.
+
+I have been reading them slowly.  I have almost finished reading the winners.
+There are a lot of them.  They make for rather dry reading.
+
+One takeaway I have is that there is a great deal of variety in the submissions.
+The good news is that means there are a lot of things we could do.  The bad news
+is there is not any obvious choice on what we in the industry should do first.
+
+In the next few slides, I will compare and contrast principles from multiple
+papers, to give you an idea of the possibilities.
+
+Please understand these are mostly my opinions.
+
+
+### Medical Records Protected by the Blockchain
+
+![Road House Medical Record](/content/blockchain/images/RoadHouseMedicalRecord.gif)
+<!-- .element width="70%" class="fragment" -->
+
+Note:
+Almost all the papers are founded on the premise that we want to get medical
+records secured by the blockchain.  If we can get that, then everything else
+tends to fall into place.
+
+Remember Road House Healthcare?  Keep it in mind.  Patient control over medical
+data is a recurring theme.  Securing it in a blockchain system is constant.
+
+
+### On- or Off-Chain?
+
+![Blockchain Structure](/content/blockchain/images/BlockchainStructure.png)
+
+Note:
+In Bitcoin, all relevant data is on the blockchain, or "on-chain".  However,
+Bitcoin is only a ledger of transactions.  If medical data were contained in
+a blockchain system, the data itself is probably not stored on the blockchain.
+One reason is that the blockchain is replicated on every single node.  You can't
+have every patient's medical imaging results copied that many times.  It's
+ridiculous.
+
+Most, but not all, papers agree that medical data should be stored off-chain.
+You would use the blockchain to store transactions, such as "I give this doctor
+read and write access to my records."  Most of them.  One paper suggests storing
+data on-chain in CCDAs.
+
+
+### Incentives
+
+- Using clinical trials to pay for system upkeep <!-- .element class="fragment" -->
+    - [MIT OPAL/Enigma paper](https://www.healthit.gov/sites/default/files/1-78-blockchainandhealthitalgorithmsprivacydata_whitepaper.pdf) <!-- .element class="fragment"-->
+        - Charge for running aggregate queries <!-- .element class="fragment"-->
+    - MedRec paper
+        - Clinical trials serve as miners
+        - Are compensated in aggregate data
+
+Note:
+Bitcoin works on incentives.  Proof-of-work is crucial to distributed consensus,
+and as a result the best miners are compensated in the most obvious currency --
+newly minted Bitcoin.
+
+In a centralized EMR, it is clear that the providers pay for the service.  But if
+that service is decentralized, there is no clear EMR owner -- they all share
+the same network.  So, who pays for the servers?
+
+One common answer is clinical trials.  These are currently very expensive.  They
+have plenty of money.  Now, imagine everyone's medical record is protected by the
+blockchain.  You could write a bot that has permission to access people's
+anonymized records, and only returns aggregate results.  You could see how many
+people took this drug and then had a heart attack within six months, without any
+access to private health records.
+
+
+### The Role of EMRs
+
+- Siloed Data Lakes <!-- .element class="fragment" -->
+- Interoperability
+
+Note:
+If the data is completely patient-controlled, and secured in a non-proprietary
+blockchain system, then EMRs no longer own and control the data.  In this way,
+they would function more as siloed data lakes.  When someone requests a file
+and has a valid access token, you surrender the file.  You no longer have
+access to the file itself, except through the blockchain if you can get permission,
+just like everybody else.
+
+It would be possible for an EMR to be compensated nominal amounts for each
+transaction.  Remember, after all, this all started with cryptocurrency.
+
+The EMR still would provide a user interface for providers, and/or for patients.
+There is still work to be done.  But that interface would work on any data
+that came from any EMR.
+
+We still need to fix interoperability.  Speaking of which...
+
+
+### Proof of Interoperability
+
+#### A Possible Replacement for Proof-of-Work
+
+Note:
+One of the papers had an interesting idea of replacing the Bitcoin proof-of-work
+concept with a proof-of-interoperability, heavily leaning on FHIR.  Interesting.
+
+
+### Clinical Decision Making
+
+What if we could give Watson access to complete, anonymized health records,
+including genomes?
+
+
+
+## Current Status (December, 2016)
+
+Total number of healthcare blockchain apps in production: <span class="fragment">0</span><!-- .element class="fragment"-->
+
+Expect to hear more from startups during 2017.<!-- .element class="fragment"-->
