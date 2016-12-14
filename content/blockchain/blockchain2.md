@@ -839,9 +839,9 @@ data on-chain in CCDAs.
 - Using clinical trials to pay for system upkeep <!-- .element class="fragment" -->
     - [MIT OPAL/Enigma paper](https://www.healthit.gov/sites/default/files/1-78-blockchainandhealthitalgorithmsprivacydata_whitepaper.pdf) <!-- .element class="fragment"-->
         - Charge for running aggregate queries <!-- .element class="fragment"-->
-    - MedRec paper
-        - Clinical trials serve as miners
-        - Are compensated in aggregate data
+    - [MedRec paper](https://www.healthit.gov/sites/default/files/onc_blockchainchallenge_mitwhitepaper_copyrightupdated.pdf)<!-- .element class="fragment"-->
+        - Clinical trials serve as miners<!-- .element class="fragment"-->
+        - Are compensated in aggregate data<!-- .element class="fragment"-->
 
 Note:
 Bitcoin works on incentives.  Proof-of-work is crucial to distributed consensus,
